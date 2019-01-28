@@ -10,7 +10,7 @@ import time
 import os
 from kafka import KafkaConsumer
 
-consumer = KafkaConsumer('pidgeot', bootstrap_servers='34.217.221.173:9092', auto_offset_reset='earliest')
+consumer = KafkaConsumer('pidgeot-test', bootstrap_servers='192.168.70.3:9092', auto_offset_reset='latest')
 
 # #### VARIABLES #### #
 
@@ -96,4 +96,4 @@ if __name__ == "__main__":
         print (message)
         messagestr = message.value
         main(messagestr)
-        time.sleep(180)
+        #time.sleep(180)

@@ -1,2 +1,3 @@
 #requirement placeholder
 paramiko==2.4.2
+kafka-python==1.4.4

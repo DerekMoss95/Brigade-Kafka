@@ -23,7 +23,7 @@ consumer = KafkaConsumer('pidgeot-test', bootstrap_servers='192.168.70.3:9092', 
 
 # Email handling items - email addresses
 ADMIN_NOTIFY_LIST = ['mossderek88@gmail.com']
-FROM_ADDRESS = 'it515rgryffindor@gmail.com'
+FROM_ADDRESS = 'pidgeotteam@gmail.com'
 
 # Begin Execution Here
 
@@ -61,7 +61,7 @@ def send_server_status_report(message):
             smtp = smtplib.SMTP('smtp.gmail.com', 587)
             smtp.starttls()
             smtp.ehlo()
-            smtp.login(FROM_ADDRESS, 'gryffindor')
+            smtp.login(FROM_ADDRESS, 'fd67!pidgeot')
         except Exception as e:
             print("Could not correctly establish SMTP connection with Google, error was: %s" % (e.__str__()))
             exit()

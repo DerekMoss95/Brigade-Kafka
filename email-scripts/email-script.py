@@ -22,7 +22,7 @@ consumer = KafkaConsumer('pidgeot-test', bootstrap_servers='192.168.70.3:9092', 
 #print(host_ip)
 
 # Email handling items - email addresses
-ADMIN_NOTIFY_LIST = ['mossderek88@gmail.com']
+ADMIN_NOTIFY_LIST = ['mossderek88@gmail.com', 'pidgeotteam@gmail.com']
 FROM_ADDRESS = 'pidgeotteam@gmail.com'
 
 # Begin Execution Here

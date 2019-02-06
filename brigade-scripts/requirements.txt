@@ -1,0 +1,2 @@
+#requirement placeholder
+kafka-python==1.4.4

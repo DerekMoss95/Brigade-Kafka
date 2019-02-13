@@ -1,7 +1,7 @@
 # Kafka Custom Event Gateway
 import os, uuid, base64
 
-namespace="brigade-kafka"
+namespace="team-pidgeot"
 
 event_provider="simple-event"
 event_type="kafka_push"
@@ -11,6 +11,11 @@ commit_ref="master"
 commit_id="2c81ffd88a8d93383270f0bc06ff15a41030f084"
 
 uuid.uuid4()
+
+uname = os.uname()
+if (uname != "Darwin"):
+    base64+=(-w 0)
+    uuidgen+=(-t)
 
 script="""const {events} = require("brigadier");
         events.on("kafka_push", (e) => {

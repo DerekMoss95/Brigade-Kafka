@@ -11,9 +11,9 @@ events.on("exec", function(e, project) {
   job.tasks = [
     "cd /src/brigade-scripts",
     "ls -la",
-    "pip install -r requirements.txt",
+    "pip3 install -r requirements.txt",
     "chmod +x generateReport.py",
-    "python generateReport.py"
+    "python3 generateReport.py"
   ]
   console.log("set the tasks")
 

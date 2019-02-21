@@ -6,4 +6,4 @@ COPY kafka-event.py /usr/local/bin/.
 RUN chmod +x /usr/local/bin/kafka-event.py
 RUN pip3 install -r requirements.txt
 
-CMD python3 /usr/local/bin/kafka-event.py
+CMD /usr/local/bin/kafka-event.py

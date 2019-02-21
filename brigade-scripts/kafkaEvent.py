@@ -11,10 +11,14 @@ def createSecretPython(payload):
     client.configuration.assert_hostname = False
     api_instance = client.CoreV1Api()
     sec = client.V1Secret()
-
     sec.metadata = client.V1ObjectMeta(name="mysecret")
+    #sec.metadata = client.V1ObjectMeta(name="mysecret", 
+    #        labels={"heritage":"brigade", 
+    #            "project":"brigade-kafka", 
+    #            "build": str(uuid.uuid4()), 
+    #            "component":"build"})
     sec.type = "brigade.sh/job"
-    sec.data = {"AppData": payload}
+    sec.data = {"AppData": str(base64.b64encode(bytes(payload, 'utf-8')))}
     api_instance.create_namespaced_secret(namespace="default", body=sec)
 
 def createSecret(payload):
@@ -72,5 +76,5 @@ def createSecret(payload):
     subprocess.call("cat %s" %contents)
 
 if __name__ == '__main__':
-    createSecretPython("bXl1c2VybmFtZQ==")
+    createSecretPython("Hello World")
 

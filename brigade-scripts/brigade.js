@@ -9,7 +9,7 @@ events.on("exec", function(e, project) {
 
   // Now we want it to run these commands in order:
   job.tasks = [
-    "cd /src",
+    "cd /src/brigade-scripts",
     "ls -la",
     "pip install -r requirements.txt",
     "chmod +x generateReport.py",

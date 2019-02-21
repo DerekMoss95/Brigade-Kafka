@@ -1,6 +1,9 @@
+#!/usr/bin/python3
+
 from flask import Flask
 from flask import render_template
 from flask import request
+import json
 import producer
 
 app = Flask(__name__)
@@ -14,7 +17,7 @@ def send():
         nationPark = request.form['parkName']
         startDate = request.form['startDate']
         endDate = request.form['endDate']
-        producer.send(nationPark + startDate + endDate)
+        producer.send(json.dumps({'Park': nationPark, 'SDate':startDate,'EDate':endDate}))
         return 'OK'
 
 if __name__ == "__main__":

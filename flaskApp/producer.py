@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 from kafka import KafkaProducer
 from kafka.errors import KafkaError
 producer = KafkaProducer(bootstrap_servers=['192.168.70.3:9092'])#box 3, running kafka subscriber

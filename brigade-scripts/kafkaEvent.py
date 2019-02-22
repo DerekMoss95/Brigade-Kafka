@@ -3,6 +3,7 @@
 # Kafka Custom Event Gateway
 import os, uuid, base64, json, subprocess
 from kubernetes import client, config
+import ujson
 
 # I just created this function to follow the Jupyter workbook that matt sent us. It creates a scret but is still missing a couple attributes for the brigade.js file to pick it up. I play with adding those later
 
@@ -12,15 +13,13 @@ def createSecretPython(payload):
     api_instance = client.CoreV1Api()
     sec = client.V1Secret()
     # Check to see if project name works or if we need to change to projectid
-    sec.metadata = client.V1ObjectMeta(name="mysecret", 
+    sec.metadata = client.V1ObjectMeta(name="newestsecret", 
             labels={"heritage":"brigade", 
                 "project":"brigade-kafka", 
                 "build": str(uuid.uuid4()), 
                 "component":"build"})
     sec.type = "brigade.sh/job"
-    #payload = json.dumps(payload)
-    sec.data = {"AppData": base64.b64encode(payload).decode('ASCII')}
-    #sec.data = {"AppData": base64.b64encode(bytes(payload, 'utf-8')).decode('ASCII')}
+    sec.string_data = {"AppData": payload}
     api_instance.create_namespaced_secret(namespace="default", body=sec)
 
 def createSecret(payload):

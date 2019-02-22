@@ -12,12 +12,15 @@ events.on("exec", function(e, project) {
 	job.env = {
 		mySecretReference: {
 			secretKeyRef: {
-				name: "mysecret",
-				data: "AppData"
+				name: "newestsecret",
+				key: "AppData"
 			}
 		}
-	};
+  };
+
+  
 job.tasks = [
+    "echo hello ${mySecretReference}",
     "cd /src/brigade-scripts",
     "ls -la",
     "pip3 install -r requirements.txt",

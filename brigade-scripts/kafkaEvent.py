@@ -12,9 +12,9 @@ def createSecretPython(payload):
     client.configuration.assert_hostname = False
     api_instance = client.CoreV1Api()
     sec = client.V1Secret()
+    build = str(uuid.uuid4()) 
     # Check to see if project name works or if we need to change to projectid
-    build = str(uuid.uuid4())
-    sec.metadata = client.V1ObjectMeta(name="newestsecret", 
+    sec.metadata = client.V1ObjectMeta(name="mysecret", 
             labels={"heritage":"brigade", 
                 "project":"brigade-kafka", 
                 "build": build, 
@@ -25,4 +25,3 @@ def createSecretPython(payload):
 
 if __name__ == '__main__':
     createSecretPython("Hello World")
-

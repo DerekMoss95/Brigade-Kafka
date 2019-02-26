@@ -2,14 +2,18 @@
 import requests
 import json
 import objectpath
+import sys
 from datetime import datetime
 from email.mime.text import MIMEText
 import smtplib
 
 name = "derek"
+name = str(sys.argv[1])
 email = "pidgeotteam@gmail.com"
+email = str(sys.argv[2])
 campsiteName = "bear"
-URL = "https://ridb.recreation.gov/api/v1/campsites?query="+campsiteName+"&limit=5&offset=0"
+campsiteName = str(sys.argv[3])
+URL = "https://ridb.recreation.gov/api/v1/campsites?query="+campsiteName+"&limit=20&offset=0"
 
 print(URL)
 data = {'accept': 'application/json', 'apikey': '77567128-da03-485c-b324-f8d2a0059b9d'}
@@ -47,7 +51,7 @@ def current_timestamp():
     return datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
 
 # Email handling items - email addresses
-ADMIN_NOTIFY_LIST = ['mossderek88@gmail.com', 'pidgeotteam@gmail.com']
+ADMIN_NOTIFY_LIST = ['mossderek88@gmail.com', email]
 FROM_ADDRESS = 'pidgeotteam@gmail.com'
 
 def send_server_status_report(message):

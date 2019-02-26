@@ -9,14 +9,14 @@ events.on("exec", function(e, project) {
   //console.log(project.secrets.username)
   // Now we want it to run these commands in order:
 	// Ask how to access secrets in brigade.js file
-	//job.env = {
-	//   mySecretReference: {
-	//   secretKeyRef: {
-	//   name: "newestsecret",
-	//   key: "AppData"
-  //      }
-  //   }
-  //};
+	job.env = {
+	   mySecretReference: {
+	   secretKeyRef: {
+	   name: "mysecret",
+	   key: "AppData"
+        }
+     }
+  };
 
   
   job.tasks = [

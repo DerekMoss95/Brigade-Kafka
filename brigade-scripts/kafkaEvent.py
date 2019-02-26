@@ -14,7 +14,7 @@ def createSecretPython(payload):
     sec = client.V1Secret()
     UUID = str(uuid.uuid4()) 
     # Check to see if project name works or if we need to change to projectid
-    sec.metadata = client.V1ObjectMeta(name="mysecretweh"+ str(UUID), 
+    sec.metadata = client.V1ObjectMeta(name="mysecret"+ str(UUID), 
             labels={"heritage":"brigade", 
                 "project":"brigade-kafka", 
                 "build": UUID, 

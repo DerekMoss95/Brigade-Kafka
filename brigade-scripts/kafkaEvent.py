@@ -20,7 +20,10 @@ def createSecretPython(payload):
                 "build": UUID, 
                 "component":"build"})
     sec.type = "brigade.sh/build"
-    sec.string_data = {"AppData": ascii(payload), "event_type":"exec", "build_id": UUID}
+    sec.string_data = {"AppData": ascii(payload), "event_type":"exec", "build_id": UUID, "commit_ref": "master"}
+    #move brigade.js to root of repo
+    #add sec.data again
+    #redo project entirely?
     
     api_instance.create_namespaced_secret(namespace="default", body=sec)
 

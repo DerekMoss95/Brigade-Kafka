@@ -12,15 +12,16 @@ def createSecretPython(payload):
     client.configuration.assert_hostname = False
     api_instance = client.CoreV1Api()
     sec = client.V1Secret()
-    build = str(uuid.uuid4()) 
+    UUID = str(uuid.uuid4()) 
     # Check to see if project name works or if we need to change to projectid
-    sec.metadata = client.V1ObjectMeta(name="mysecret", 
+    sec.metadata = client.V1ObjectMeta(name="mysecretweh"+ str(UUID), 
             labels={"heritage":"brigade", 
                 "project":"brigade-kafka", 
-                "build": build, 
+                "build": UUID, 
                 "component":"build"})
-    sec.type = "brigade.sh/job"
-    sec.string_data = {"AppData": ascii(payload), "event_type":"push", "build_id": build}
+    sec.type = "brigade.sh/build"
+    sec.string_data = {"AppData": ascii(payload), "event_type":"exec", "build_id": UUID}
+    
     api_instance.create_namespaced_secret(namespace="default", body=sec)
 
 if __name__ == '__main__':

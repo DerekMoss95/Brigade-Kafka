@@ -19,38 +19,24 @@ def createSecretPython(payload):
     sec.metadata = client.V1ObjectMeta(name="mysecret" + str(UUID), 
             labels={"heritage":"brigade", 
                 "project":"brigade-kafka", 
-                "build": UUID, 
+                "build": "mysecret" + str(UUID), 
                 "component":"build"})
     sec.type = "brigade.sh/build"
-    data = {"script": "brigade.sh/build", "payload": "Hey there"}
     encoded_data = base64.b64encode(json.dumps("hey").encode())
-    encoded_data2 = base64.b64encode(json.dumps("there").encode())
+    encoded_data2 = base64.b64encode(json.dumps(payload).encode())
     decoded_data = encoded_data.decode('utf-8')
     decoded_data2 = encoded_data2.decode('utf-8')
     json_data = {"AppData": decoded_data, "payload": decoded_data2}
-
-    #encoded_data = json.JSONEncoder(encoded_data) 
     sec.data = json_data
     sec.string_data = {
-        "AppData": ascii(payload), 
         "event_type": "exec", 
-        "build_id": UUID, 
+        "build_id": "mysecret" + str(UUID), 
         "commit_ref": "master", 
         "project": "brigade-kafka", 
         "project_id": "brigade-kafka",
-		"build_name": UUID,
+		"build_name": "mysecret" + str(UUID),
 		"event_provider": "brigade_cli"}
-    #move brigade.js to root of repo
-    #add sec.data again
-    #redo project entirely?
-    #https://github.com/Azure/brigade/blob/master/pkg/storage/kube/build.go#L86-L122
-    # prestart: no dependencies file found
-    # prestart: loading script from /vcs/brigade.js
-    # [brigade] brigade-worker version: 0.19.0
-    # [brigade] Missing required env BRIGADE_PROJECT_ID
-    # error Command failed with exit code 1.
-
-    
+    #why are AppData and payload data secrets available in the mysecret pod but not in the generatereport pod?
     api_instance.create_namespaced_secret(namespace="default", body=sec)
 
 if __name__ == '__main__':

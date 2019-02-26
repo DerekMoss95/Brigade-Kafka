@@ -2,11 +2,14 @@ const { events, Job } = require("brigadier");
 
 events.on("exec", function(e, project) {
   console.log("beginning " + e.revision.commit)
-	console.log(project.secrets)
+
   // Create a new job
   var job = new Job("generate-report", "python:3.6.8-slim-jessie")
   console.log(project)
   console.log(job)
+  console.log(project.secrets.payload)
+  console.log(project.secrets.AppData)
+  console.log(project.secrets)
   //console.log(project.secrets.username)
   // Now we want it to run these commands in order:
 	// Ask how to access secrets in brigade.js file

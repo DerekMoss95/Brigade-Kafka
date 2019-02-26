@@ -14,16 +14,31 @@ def createSecretPython(payload):
     sec = client.V1Secret()
     UUID = str(uuid.uuid4()) 
     # Check to see if project name works or if we need to change to projectid
-    sec.metadata = client.V1ObjectMeta(name="mysecret"+ str(UUID), 
+    sec.metadata = client.V1ObjectMeta(name="mysecret" + str(UUID), 
             labels={"heritage":"brigade", 
                 "project":"brigade-kafka", 
                 "build": UUID, 
                 "component":"build"})
     sec.type = "brigade.sh/build"
-    sec.string_data = {"AppData": ascii(payload), "event_type":"exec", "build_id": UUID, "commit_ref": "master"}
+    sec.string_data = {
+        "AppData": ascii(payload), 
+        "event_type": "exec", 
+        "build_id": UUID, 
+        "commit_ref": "master", 
+        "project": "brigade-kafka", 
+        "project_id": "brigade-kafka",
+		"build_name": UUID,
+		"event_provider": "brigade_cli"}
     #move brigade.js to root of repo
     #add sec.data again
     #redo project entirely?
+    #https://github.com/Azure/brigade/blob/master/pkg/storage/kube/build.go#L86-L122
+    # prestart: no dependencies file found
+    # prestart: loading script from /vcs/brigade.js
+    # [brigade] brigade-worker version: 0.19.0
+    # [brigade] Missing required env BRIGADE_PROJECT_ID
+    # error Command failed with exit code 1.
+
     
     api_instance.create_namespaced_secret(namespace="default", body=sec)
 

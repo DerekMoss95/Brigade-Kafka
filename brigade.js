@@ -8,19 +8,15 @@ events.on("exec", function(e, project) {
   console.log(project)
   console.log(job)
   console.log(project.secrets.payload)
-  console.log(project.secrets.AppData)
   console.log(project.secrets)
-  //console.log(project.secrets.username)
-  // Now we want it to run these commands in order:
-	// Ask how to access secrets in brigade.js file
-	// job.env = {
-	//    mySecretReference: {
-	//    secretKeyRef: {
-	//    name: project.secrets,
-	//    key: "AppData"
-  //       }
-  //    }
-  // };
+	job.env = {
+	  mySecretReference: {
+	  secretKeyRef: {
+    name: "mysecret",
+    key: "payload"
+        }
+     }
+  };
 
   
   job.tasks = [
@@ -28,7 +24,7 @@ events.on("exec", function(e, project) {
     "cd /src/brigade-scripts",
     "pip3 install -r requirements.txt",
     "chmod +x generateReportUpdated.py",
-    "python3 generateReportUpdated.py Derek pidgeotteam@gmail.com bear",
+    "python3 generateReportUpdated.py ${mySecretReference}",
     //"echo ${mySecretReference}"
     ]
   console.log("set the tasks")

@@ -7,15 +7,15 @@ from datetime import datetime
 from email.mime.text import MIMEText
 import smtplib
 
-
 name = "derek"
 name = str(sys.argv[1])
 email = "pidgeotteam@gmail.com"
+email = str(sys.argv[2])
 campsiteName = "bear"
+campsiteName = str(sys.argv[3])
 URL = "https://ridb.recreation.gov/api/v1/campsites?query="+campsiteName+"&limit=20&offset=0"
 
-print(name)
-print(type(name))
+print(URL)
 data = {'accept': 'application/json', 'apikey': '77567128-da03-485c-b324-f8d2a0059b9d'}
 
 r = requests.get(url = URL, params = data)

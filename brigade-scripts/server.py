@@ -8,7 +8,8 @@ if __name__ == '__main__':
         # reset these global variables on every run
         print (message)
         messagestr = message.value
-        subprocess.call(["kubectl","delete" ,"secret" , "mysecret"])
-        time.sleep(5)
+        #subprocess.call(["kubectl","delete" ,"secret" , "mysecret"])
+        #subprocess.call(["kubectl","delete" ,"pod" , "mysecret"])
+        #time.sleep(5)
         kafkaEvent.createSecretPython(ascii(messagestr))
         #time.sleep(180)

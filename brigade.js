@@ -9,14 +9,14 @@ events.on("exec", function(e, project) {
   console.log(job)
   console.log(project.secrets.payload)
   console.log(project.secrets)
-	job.env = {
-	  mySecretReference: {
-	  secretKeyRef: {
-    name: "mysecret",
-    key: "payload"
-        }
-     }
-  };
+	// job.env = {
+	//   mySecretReference: {
+	//   secretKeyRef: {
+  //   name: "mysecret",
+  //   key: "payload"
+  //       }
+  //    }
+  // };
 
   
   job.tasks = [
@@ -24,7 +24,7 @@ events.on("exec", function(e, project) {
     "cd /src/brigade-scripts",
     "pip3 install -r requirements.txt",
     "chmod +x generateReportUpdated.py",
-    "python3 generateReportUpdated.py ${mySecretReference}",
+    "python3 generateReportUpdated.py Michael michaelrcasey@gmail.com bear",
     //"echo ${mySecretReference}"
     ]
   console.log("set the tasks")

@@ -1,11 +1,11 @@
 const { events, Job } = require("brigadier");
 
-events.on("exec", function(e, project) {
-  console.log("beginning " + e.revision.commit)
+events.on("exec", function(even, project) {
+  console.log("beginning " + even.revision.commit)
 
   // Create a new job
   var job = new Job("generate-report", "python:3.6.8-slim-jessie")
-  console.log(e)
+  console.log(even.payload)
   //console.log(job)
   //console.log(project.secrets.payload)
   //console.log(project.secrets)

@@ -5,10 +5,10 @@ events.on("exec", function(e, project) {
 
   // Create a new job
   var job = new Job("generate-report", "python:3.6.8-slim-jessie")
-  console.log(project)
-  console.log(job)
-  console.log(project.secrets.payload)
-  console.log(project.secrets)
+  console.log(e)
+  //console.log(job)
+  //console.log(project.secrets.payload)
+  //console.log(project.secrets)
 	// job.env = {
 	//   mySecretReference: {
 	//   secretKeyRef: {

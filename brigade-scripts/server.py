@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from kafka import KafkaConsumer
 import kafkaEvent
 import subprocess

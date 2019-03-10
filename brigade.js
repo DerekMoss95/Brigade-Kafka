@@ -6,26 +6,19 @@ events.on("exec", function(even, project) {
   // Create a new job
   var job = new Job("generate-report", "python:3.6.8-slim-jessie")
   console.log(even.payload)
-  //console.log(job)
-  //console.log(project.secrets.payload)
-  //console.log(project.secrets)
-	// job.env = {
-	//   mySecretReference: {
-	//   secretKeyRef: {
-  //   name: "mysecret",
-  //   key: "payload"
-  //       }
-  //    }
-  // };
+  console.log(even.buildID)
+  console.log(even)
+  job.env = {
+    mySecretRef: even.payload
+  }
 
   
   job.tasks = [
-    //"echo hello ${mySecretReference}",
+    "echo hello ${mySecretRef}",
     "cd /src/brigade-scripts",
     "pip3 install -r requirements.txt",
     "chmod +x generateReportUpdated.py",
-    "python3 generateReportUpdated.py Michael michaelrcasey@gmail.com bear",
-    //"echo ${mySecretReference}"
+    "python3 generateReportUpdated.py ${mySecretRef}",
     ]
   console.log("set the tasks")
 

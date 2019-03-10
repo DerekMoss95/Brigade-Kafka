@@ -22,11 +22,9 @@ def createSecretPython(payload):
                 "build": "mysecret" + str(UUID), 
                 "component":"build"})
     sec.type = "brigade.sh/build"
-    encoded_data = base64.b64encode(json.dumps("hey").encode())
-    encoded_data2 = base64.b64encode(json.dumps(payload).encode())
+    encoded_data = base64.b64encode(json.dumps(payload).encode())
     decoded_data = encoded_data.decode('utf-8')
-    decoded_data2 = encoded_data2.decode('utf-8')
-    json_data = {"AppData": decoded_data, "payload": decoded_data2}
+    json_data = {"payload": decoded_data}
     sec.data = json_data
     sec.string_data = {
         "event_type": "exec", 

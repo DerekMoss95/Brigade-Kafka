@@ -6,13 +6,14 @@ import sys
 from datetime import datetime
 from email.mime.text import MIMEText
 import smtplib
-
+for i in sys.argv:
+    print(i)
 name = "derek"
-name = str(sys.argv[1])
+#name = str(sys.argv[1])
 email = "pidgeotteam@gmail.com"
-email = str(sys.argv[2])
+#email = str(sys.argv[2])
 campsiteName = "bear"
-campsiteName = str(sys.argv[3])
+#campsiteName = str(sys.argv[3])
 URL = "https://ridb.recreation.gov/api/v1/campsites?query="+campsiteName+"&limit=20&offset=0"
 
 print(URL)

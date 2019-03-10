@@ -6,7 +6,7 @@ import sys
 from datetime import datetime
 from email.mime.text import MIMEText
 import smtplib
-info = json.loads(argv[1])
+info = json.loads(sys.argv[1])
 print(info)
 name = info['Name']
 #name = str(sys.argv[1])

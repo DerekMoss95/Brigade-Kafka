@@ -6,9 +6,11 @@ import sys
 from datetime import datetime
 from email.mime.text import MIMEText
 import smtplib
-
-print(sys.argv[1])
-print(ascii(sys.argv[1]))
+info = ""
+for i in sys.argv:
+    info += i
+print(info)
+print(ascii(info))
 #info = json.loads(ascii(sys.argv[1].strip('b\'')).strip('\''))
 name = info['Name']
 email = info['email']

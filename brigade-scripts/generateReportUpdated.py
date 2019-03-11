@@ -8,7 +8,8 @@ from email.mime.text import MIMEText
 import smtplib
 info = ""
 with open('mysecret','r') as f:
-    info = f.readline
+    info = f.readline()
+
 print(info)
 
 name = info['Name']

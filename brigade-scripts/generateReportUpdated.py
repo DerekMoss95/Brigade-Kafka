@@ -7,11 +7,10 @@ from datetime import datetime
 from email.mime.text import MIMEText
 import smtplib
 info = ""
-for i in sys.argv[1:]:
-    info += i
+with open('mysecret','r') as f:
+    info = f.readline
 print(info)
-info = json.loads(ascii(info.strip('b\'')).strip('\''))
-print(info)
+
 name = info['Name']
 email = info['email']
 campsiteName = info['CampsiteName']

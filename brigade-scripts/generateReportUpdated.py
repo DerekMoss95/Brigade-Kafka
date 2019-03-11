@@ -6,16 +6,13 @@ import sys
 from datetime import datetime
 from email.mime.text import MIMEText
 import smtplib
-#info = json.loads(sys.argv[1])
-for arr in sys.argv:
-    print(arr)
 
-#name = info['Name']
-#name = str(sys.argv[1])
-#email = info['email']
-#email = str(sys.argv[2])
-#campsiteName = info['CampsiteName']
-#campsiteName = str(sys.argv[3])
+
+info = json.loads(ascii(sys.argv[1].strip('b\'')).strip('\''))
+name = info['Name']
+email = info['email']
+campsiteName = info['CampsiteName']
+
 URL = "https://ridb.recreation.gov/api/v1/campsites?query="+campsiteName+"&limit=20&offset=0"
 
 print(URL)
@@ -54,7 +51,7 @@ def current_timestamp():
     return datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
 
 # Email handling items - email addresses
-ADMIN_NOTIFY_LIST = ['michaelrcasey@gmail.com', email]
+ADMIN_NOTIFY_LIST = [email]
 FROM_ADDRESS = 'pidgeotteam@gmail.com'
 
 def send_server_status_report(message):

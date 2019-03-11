@@ -7,8 +7,9 @@ from datetime import datetime
 from email.mime.text import MIMEText
 import smtplib
 
-
-info = json.loads(ascii(sys.argv[1].strip('b\'')).strip('\''))
+print(sys.argv[1])
+print(ascii(sys.argv[1]))
+#info = json.loads(ascii(sys.argv[1].strip('b\'')).strip('\''))
 name = info['Name']
 email = info['email']
 campsiteName = info['CampsiteName']

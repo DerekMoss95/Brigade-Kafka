@@ -6,13 +6,15 @@ import sys
 from datetime import datetime
 from email.mime.text import MIMEText
 import smtplib
-info = json.loads(sys.argv[1])
-print(info)
-name = info['Name']
+#info = json.loads(sys.argv[1])
+for arr in sys.argv:
+    print(arr)
+
+#name = info['Name']
 #name = str(sys.argv[1])
-email = info['email']
+#email = info['email']
 #email = str(sys.argv[2])
-campsiteName = info['CampsiteName']
+#campsiteName = info['CampsiteName']
 #campsiteName = str(sys.argv[3])
 URL = "https://ridb.recreation.gov/api/v1/campsites?query="+campsiteName+"&limit=20&offset=0"
 

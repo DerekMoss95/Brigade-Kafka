@@ -9,6 +9,7 @@ import smtplib
 info = ""
 for i in sys.argv[1:]:
     info += i
+print(info)
 info = json.loads(ascii(sys.argv[1].strip('b\'')).strip('\''))
 print(info)
 name = info['Name']

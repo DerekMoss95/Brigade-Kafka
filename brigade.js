@@ -14,11 +14,11 @@ events.on("exec", function(even, project) {
 
   
   job.tasks = [
-    "echo hello ${mySecretRef}",
+    "echo ${mySecretRef} > /src/brigade-scripts/mysecret",
     "cd /src/brigade-scripts",
     "pip3 install -r requirements.txt",
     "chmod +x generateReportUpdated.py",
-    "python3 generateReportUpdated.py ${mySecretRef}",
+    "python3 generateReportUpdated.py '${mySecretRef}'",
     ]
   console.log("set the tasks")
 

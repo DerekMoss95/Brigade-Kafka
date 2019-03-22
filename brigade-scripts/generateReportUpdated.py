@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import requests
 import json
-import objectpath
+#import objectpath
 import sys
 from datetime import datetime
 from email.mime.text import MIMEText
@@ -9,9 +9,8 @@ import smtplib
 info = ""
 with open('mysecret','r') as f:
     info = f.readline()
-
+info = json.loads(info[3:-3].replace("\\",""))
 print(info)
-
 name = info['Name']
 email = info['email']
 campsiteName = info['CampsiteName']

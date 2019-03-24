@@ -14,11 +14,11 @@ def main():
 
 @app.route('/send', methods=['GET', 'POST'])
 def send():
-        nationPark = request.form['parkName']
-        startDate = request.form['startDate']
-        endDate = request.form['endDate']
-        producer.send(json.dumps({'Park': nationPark, 'SDate':startDate,'EDate':endDate}))
-        return 'OK'
+        name = request.form['name']
+        email = request.form['email']
+        campsite = request.form['campsiteName']
+        producer.send(json.dumps({'Name': name, 'email': email, 'CampsiteName': campsite}))
+        return 'Recieved. Email will be sent once data is gathered'
 
 if __name__ == "__main__":
     app.run(host= '0.0.0.0')

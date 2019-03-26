@@ -3,8 +3,6 @@
 # Kafka Custom Event Gateway
 import os, uuid, base64, json, subprocess
 from kubernetes import client, config
-import ujson
-import pickle
 from json import JSONEncoder
 
 # I just created this function to follow the Jupyter workbook that matt sent us. It creates a scret but is still missing a couple attributes for the brigade.js file to pick it up. I play with adding those later

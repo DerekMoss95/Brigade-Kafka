@@ -2,7 +2,7 @@
 from kafka import KafkaConsumer
 from kubernetes import client, config
 from json import JSONEncoder
-import subprocess, time, os, uuid, base64, subprocess, json, sys, argparse
+import os, uuid, base64, json, sys, argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--topic', default=os.environ.get('KAFKA_GATEWAY_TOPIC', None))

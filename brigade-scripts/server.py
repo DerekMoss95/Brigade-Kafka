@@ -5,21 +5,17 @@ from json import JSONEncoder
 import subprocess, time, os, uuid, base64, subprocess, json, sys, argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--topic', '-topic', '-TOPIC', required=True)
-parser.add_argument('--brigade_project_name', '-brigade_project_name', '-BRIGADE_PROJECT_NAME', required=True)
-parser.add_argument('--host', '-host', '-HOST', required=True)
-parser.add_argument('--port', '-port', '-PORT', required=True)
-parser.add_argument('--offset', '-offset', '-OFFSET', required=True)
+parser.add_argument('--topic', default=os.environ.get('KAFKA_GATEWAY_TOPIC', None))
+parser.add_argument('--host', default=os.environ.get('KAFKA_GATEWAY_HOST', None))
+parser.add_argument('--port', default=os.environ.get('KAFKA_GATEWAY_PORT', '9092'))
+parser.add_argument('--offset', default=os.environ.get('KAFKA_GATEWAY_OFFSET', 'latest'))
+parser.add_argument('--brigade_project_name', default=os.environ.get('KAFKA_GATEWAY_BRIGADE_PROJECT_NAME', None))
 args = parser.parse_args()
-print(args)
 
 topic = args.topic
 serverIP = args.host + ':' + args.port
 offset = args.offset
-
-#topic = 'pidgeot'
-#serverIP = '192.168.70.3:9092'
-#offset = 'latest'
+brigade_project_name = args.brigade_project_name
 
 consumer = KafkaConsumer(topic, bootstrap_servers=serverIP, auto_offset_reset=offset)
 
